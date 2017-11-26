@@ -60,4 +60,76 @@ def hanoi(n=1,a='a',b='b',c='c'):
         hanoi(n-1,a,c,b)
         print(a,'---->',c)
         hanoi(n-1,b,a,c)
-        
+
+#Function DecimalToBinary(number) convert decimal number to binary number
+#Method below is circular one
+def DecimaiToBinary_cir(number):
+    def convert_opt(num):
+        temp = []
+        residue = num
+        quotient = num
+        while( quotient ): #If quotient is not zero, while loop will keep working
+            residue = quotient % 2
+            quotient = quotient // 2
+            temp.append(residue)
+        temp.reverse()
+        result = ''
+        for item in temp:
+            result += str(item)
+        return result
+            
+            
+    str_num = str(number)
+    str_num_twopart_list = str_num.split('.')
+    length = len(str_num_twopart_list)
+    integer_part = int(str_num_twopart_list[0])    
+    if integer_part <= 0:
+        integer_part = abs(integer_part)
+        integer_part_to_b = convert_opt(integer_part)
+        if length == 2:            
+            fraction_part = int(str_num_twopart_list[1])
+            fraction_part_to_b = convert_opt(fraction_part)
+            return '-' + integer_part_to_b + '.' + fraction_part_to_b
+        else:
+            return '-' + integer_part_to_b
+    else:
+        integer_part_to_b = convert_opt(integer_part)
+    if length == 2:            
+        fraction_part = int(str_num_twopart_list[1])
+        fraction_part_to_b = convert_opt(fraction_part)
+        return integer_part_to_b + '.' + fraction_part_to_b
+    else:
+        return integer_part_to_b
+    
+#Method two is recursive one
+def DecimaiToBinary_rec(number):
+    if number == 0:
+        return '0'
+    elif number < 0:
+        number = abs(number)
+        res = ''
+        if number:
+            res = '-'+DecimaiToBinary_rec(number // 2)
+            return  res + str(number % 2)
+        else:
+            return res
+    else:
+        res = ''
+        if number:
+            res = DecimaiToBinary_rec(number // 2)
+            return res + str(number % 2)
+        else:
+            return res
+    
+    
+
+
+   
+    
+    
+    
+    
+    
+    
+    
+    
