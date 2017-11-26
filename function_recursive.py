@@ -120,7 +120,16 @@ def DecimaiToBinary_rec(number):
             return res + str(number % 2)
         else:
             return res
-    
+
+#Convert a integer into a list
+res = []
+def integer_to_list(int_num):   
+    if int_num > 0:
+        res.insert(0, int_num % 10)
+        integer_to_list(int_num // 10)
+    return res
+
+               
     
 
 
