@@ -45,3 +45,46 @@ p1 = Point(1,2,3)
 p2 = Point(2,2,4)
 line = Line(p1, p2)
 print(line.getLen())
+
+
+#Compare two words by its length
+class Word(str):
+    def __new__(cls, word):
+        if ' ' in word:
+            print('Word contains space, truncated to first space')
+            word = word[:word.index[' ']]
+        return str.__new__(cls, word)
+    
+    def __gt__(self, other):
+        return len(self) > len(other)
+    def __lt__(self, other):
+        return len(self) < len(other)
+    def __ge__(self, other):
+        return len(self) >= len(other)
+    def __le__(self, other):
+        return len(self) <= len(other)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
